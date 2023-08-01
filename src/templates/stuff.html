@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FL Savant</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="../static/main.css">
+</head>
+
+<body>
+    <header>
+        <h1>Frontier League Savant</h1>
+        <hr>
+        <nav>
+            <ul>
+                <li><a class="active">Stuff+ Leaderboard</a></li>
+                <li><a href="xstats">xStats Leaderboard</a></li>
+                <li><a href="umpire">Umpire Reports</a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+
+    <!-- Table for Stuff+ -->
+    <h2 id="headerLeaderboard">Stuff+ Leaderboard</h2>
+    <div id="stuffWrapper">
+        <table id="stuffLeaderboard" class="display">
+            <thead>
+                <tr>
+                    <th>Pitcher</th>
+                    <th>FB+</th>
+                    <th>CB+</th>
+                    <th>SI+</th>
+                    <th>CUT+</th>
+                    <th>SPL+</th>
+                    <th>CH+</th>
+                    <th>Stuff+</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in stuff_data %}
+                <tr>
+                    <td>{{ row['Pitcher'] }}</td>
+                    <td>{{ row['FB+'] }}</td>
+                    <td>{{ row['CB+'] }}</td>
+                    <td>{{ row['SI+'] }}</td>
+                    <td>{{ row['CUT+'] }}</td>
+                    <td>{{ row['SPL+'] }}</td>
+                    <td>{{ row['CH+'] }}</td>
+                    <td>{{ row['Stuff+'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Table for Location+ -->
+    <h2 id="headerLeaderboard">Location+ Leaderboard</h2>
+    <div id="locationWrapper">
+        <table id="locationLeaderboard" class="display">
+            <thead>
+                <tr>
+                    <th>Pitcher</th>
+                    <th>FB+</th>
+                    <th>CB+</th>
+                    <th>SI+</th>
+                    <th>CUT+</th>
+                    <th>SPL+</th>
+                    <th>CH+</th>
+                    <!-- Add other column headers here -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in location_data %}
+                <tr>
+                    <td>{{ row['Pitcher'] }}</td>
+                    <td>{{ row['FB+'] }}</td>
+                    <td>{{ row['CB+'] }}</td>
+                    <td>{{ row['SI+'] }}</td>
+                    <td>{{ row['CUT+'] }}</td>
+                    <td>{{ row['SPL+'] }}</td>
+                    <td>{{ row['CH+'] }}</td>
+                    <!-- Add other columns here -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Table for Pitching+ -->
+    <h2 id="headerLeaderboard">Pitching+ Leaderboard</h2>
+    <div id="pitchingWrapper">
+        <table id="pitchingLeaderboard" class="display">
+            <thead>
+                <tr>
+                    <th>Pitcher</th>
+                    <th>FB+</th>
+                    <th>CB+</th>
+                    <th>SI+</th>
+                    <th>CUT+</th>
+                    <th>SPL+</th>
+                    <th>CH+</th>
+                    <!-- Add other column headers here -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in pitching_data %}
+                <tr>
+                    <td>{{ row['Pitcher'] }}</td>
+                    <td>{{ row['FB+'] }}</td>
+                    <td>{{ row['CB+'] }}</td>
+                    <td>{{ row['SI+'] }}</td>
+                    <td>{{ row['CUT+'] }}</td>
+                    <td>{{ row['SPL+'] }}</td>
+                    <td>{{ row['CH+'] }}</td>
+                    <!-- Add other columns here -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            function applyCustomRendering(data) {
+                var value = parseFloat(data);
+
+                if (value <= 1) {
+                    return "<span class='StuffValue1'>" + value + "</span>";
+                } else if (value <= 2) {
+                    return "<span class='StuffValue2'>" + value + "</span>";
+                } else if (value <= 3) {
+                    return "<span class='StuffValue3'>" + value + "</span>";
+                } else if (value <= 4) {
+                    return "<span class='StuffValue4'>" + value + "</span>";
+                } else if (value <= 5) {
+                    return "<span class='StuffValue5'>" + value + "</span>";
+                } else if (value <= 6) {
+                    return "<span class='StuffValue6'>" + value + "</span>";
+                } else {
+                    return "<span class='StuffValue7'>" + value + "</span>";
+                }
+            }
+
+            function applyCustomRenderingCallback(settings) {
+                // Reapply custom rendering after filtering or sorting for Stuff+
+                $('#stuffLeaderboard td[data-colname="Stuff+"]').each(function () {
+                    var cell = $(this);
+                    var value = parseFloat(cell.text());
+                    cell.html(applyCustomRendering(value));
+                });
+
+                // Reapply custom rendering after filtering or sorting for Location+
+                $('#locationLeaderboard td[data-colname="Stuff+"]').each(function () {
+                    var cell = $(this);
+                    var value = parseFloat(cell.text());
+                    cell.html(applyCustomRendering(value));
+                });
+
+                // Reapply custom rendering after filtering or sorting for Pitching+
+                $('#pitchingLeaderboard td[data-colname="Stuff+"]').each(function () {
+                    var cell = $(this);
+                    var value = parseFloat(cell.text());
+                    cell.html(applyCustomRendering(value));
+                });
+
+                // Hide 'nan' values visually for Stuff+
+                $('#stuffLeaderboard td:contains("nan")').each(function () {
+                    $(this).text('');
+                });
+
+                // Hide 'nan' values visually for Location+
+                $('#locationLeaderboard td:contains("nan")').each(function () {
+                    $(this).text('');
+                });
+
+                // Hide 'nan' values visually for Pitching+
+                $('#pitchingLeaderboard td:contains("nan")').each(function () {
+                    $(this).text('');
+                });
+            }
+
+            var dataTableStuff = $('#stuffLeaderboard').DataTable({
+            columnDefs: [
+                {
+                    targets: "_all",
+                    render: function(data, type, row, meta) {
+                        // Format as whole number if it's a number
+                        if ($.isNumeric(data)) {
+                            return Number(data).toFixed(0);
+                        }
+                        return data;
+                    }
+                },
+                {
+                    targets: "td[data-colname='Stuff+']",
+                    render: function(data, type, row, meta) {
+                        return applyCustomRendering(data);
+                    }
+                }
+            ],
+            drawCallback: applyCustomRenderingCallback,
+        });
+
+        var dataTableLocation = $('#locationLeaderboard').DataTable({
+            columnDefs: [
+                {
+                    targets: "_all",
+                    render: function(data, type, row, meta) {
+                        // Format as whole number if it's a number
+                        if ($.isNumeric(data)) {
+                            return Number(data).toFixed(0);
+                        }
+                        return data;
+                    }
+                },
+                {
+                    targets: "td[data-colname='Location+']",
+                    render: function(data, type, row, meta) {
+                        return applyCustomRendering(data);
+                    }
+                }
+            ],
+            drawCallback: applyCustomRenderingCallback,
+        });
+
+        var dataTablePitching = $('#pitchingLeaderboard').DataTable({
+            columnDefs: [
+                {
+                    targets: "_all",
+                    render: function(data, type, row, meta) {
+                        // Format as whole number if it's a number
+                        if ($.isNumeric(data)) {
+                            return Number(data).toFixed(0);
+                        }
+                        return data;
+                    }
+                },
+                {
+                    targets: "td[data-colname='Pitching+']",
+                    render: function(data, type, row, meta) {
+                        return applyCustomRendering(data);
+                    }
+                }
+            ],
+            drawCallback: applyCustomRenderingCallback,
+        });
+    });
+</script>
+
+
+
+
+</body>
+
+</html>

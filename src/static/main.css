@@ -1,0 +1,127 @@
+body {
+    font-family: 'Roboto Mono', monospace !important;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+header {
+    font-size: 12pt;
+    background-color: #ffffff;
+    color: #333;
+    padding-top: 20px;
+    text-align: center;
+    margin: 10px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #fff;
+    margin: 20px auto;
+    width: 80%;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #545454;
+    padding: 5px 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+nav a:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.active {
+    color: white;
+    background-color: #545454;
+}
+
+#selectContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#plotContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#plotContainer img {
+    max-width: 400px;
+    margin: 10px;
+}
+
+#umpireSelect {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    padding: 8px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}
+
+hr {
+    color:black;
+}
+
+#umpLeaderboard {
+    display: block;
+  margin: 0 auto;
+  max-width: 800%;
+  height: auto;
+}
+
+#stuffWrapper, #locationWrapper, #pitchingWrapper {
+    margin-left: 200px;
+    margin-right: 200px;
+    align-items: center;
+}
+
+#headerLeaderboard {
+    margin-left: 200px;
+}
+
+#plotContainerPitcher {
+    align-items: center;
+}
+
+#pitcherImage {
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 50%;
+}
