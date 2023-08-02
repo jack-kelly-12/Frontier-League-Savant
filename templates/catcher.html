@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FL Savant</title>
+    <link rel="stylesheet" href="../static/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="../static/main.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Frontier League Savant</h1>
+        <hr>
+        <nav>
+            <ul>
+                <li><a href="stuff">Stuff+ Leaderboard</a></li>
+                <li><a href="xstats">xStats Leaderboard</a></li>
+                <li><a href="umpire">Umpire Reports</a></li>
+                <li><a class="active" href="catcher">Catcher Reports</a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+    <main class="container">
+        <p style="text-align: center;">Select a catcher to view their plot:</p>
+        <div id="selectContainer" class="d-flex justify-content-center">
+            <select id="catcherSelect" class="col-12 form-control">
+                {% for catcher in catchers %}
+                <option value="{{ catcher }}">{{ catcher }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row-flex">
+            <div class="col-md-6">
+                <img id="catcherImage" src="" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <div id="catcherLeaderboard">
+                    <img src="../static/images/catcherLeaderboard.png" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
