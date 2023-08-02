@@ -3,9 +3,9 @@ import os
 import pandas as pd
 
 app = Flask(__name__)
-stuff_df = pd.read_csv('../Plus Models/stuff+.csv')
-location_df = pd.read_csv('../Plus Models/location+.csv')
-pitching_df = pd.read_csv('../Plus Models/pitching+.csv')
+stuff_df = pd.read_csv('csvs/stuff+.csv')
+location_df = pd.read_csv('csvs/location+.csv')
+pitching_df = pd.read_csv('csvs/pitching+.csv')
 
 pitcher_folder = os.path.join(app.static_folder, 'Usages')
 catcher_folder = os.path.join(app.static_folder, 'CatcherReports')
