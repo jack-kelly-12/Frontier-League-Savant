@@ -27,18 +27,6 @@
     </header>
     <hr>
     <main>
-        <p style="text-align: center;">Select a pitcher to view their plot:</p>
-        <div id="selectContainer">
-            <select id="pitcherSelect" class="col-6">
-                {% for pitcher in pitchers %}
-                <option value="{{ pitcher }}">{{ pitcher }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div id="plotContainerPitcher">
-            <img id="pitcherImage" src="" alt="Pitcher Plot">
-        </div>
-        <br>
         <h2 id="headerLeaderboard">xStats Leaderboard</h2>
         <div id="xstatsWrapper">
             <table id="xstatsLeaderboard" class="display">
@@ -60,6 +48,18 @@
                 </tbody>
             </table>
         </div>
+    <p style="text-align: center;">Select a pitcher to view their plot:</p>
+        <div id="selectContainer">
+            <select id="pitcherSelect" class="col-6">
+                {% for pitcher in pitchers %}
+                <option value="{{ pitcher }}">{{ pitcher }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div id="plotContainerPitcher">
+            <img id="pitcherImage" src="" alt="Pitcher Plot">
+        </div>
+        <br>
        <script>
     $(document).ready(function () {
         function applyCustomRenderingCallback(settings) {

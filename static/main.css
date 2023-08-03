@@ -107,8 +107,8 @@ hr {
 }
 
 #stuffWrapper, #locationWrapper, #pitchingWrapper, #xstatsWrapper {
-    margin-left: 200px;
-    margin-right: 200px;
+    max-width: 80%;
+    margin: 0 auto;
     align-items: center;
 }
 
@@ -132,7 +132,9 @@ header li {
     margin-bottom: 20px;
 }
 
-.row-flex {
+
+
+.row-flex, #indexContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: center;
@@ -162,4 +164,58 @@ header li {
 
 #catcherImage {
     margin-left: 50px;
+}
+
+#pitchingWrapper, #xstatsWrapper, #plotContainer  {
+    margin-bottom: 30px;
+}
+
+.content-container {
+    display: flex;
+    align-items: center;
+}
+
+.col-md-6 {
+    flex: 1;
+    padding: 20px;
+}
+
+.textbox {
+    background-color: gray;
+    color: white;
+}
+
+#small {
+    font-size: 12px;
+}
+
+@media (max-width: 1000px) {
+    .row-flex {
+        flex-direction: column;
+    }
+
+    .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    #leaderboardContainer {
+        display: none;
+    }
+
+    #plotContainer,
+    #xstatsWrapper,
+    #stuffWrapper,
+    #locationWrapper,
+    #pitchingWrapper {
+        flex-direction: column; /* Change the flex direction to column for smaller screens */
+    }
+
+    #plusWrapper {
+        flex-direction: column;
+    }
+
+    #umpLeaderboard {
+        display: none;
+    }
 }
