@@ -218,4 +218,18 @@ header li {
     #umpLeaderboard {
         display: none;
     }
+
+    .content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    #slammersContainer {
+        max-width: 60%;
+    }
+
+    .textbox {
+        width: 80vw;
+    }
 }
