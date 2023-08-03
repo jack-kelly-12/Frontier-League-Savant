@@ -13,6 +13,8 @@ catcher_folder = os.path.join(app.static_folder, 'CatcherReports')
 pitchers = [f[:-4] for f in os.listdir(pitcher_folder) if f.endswith('.png')]
 catchers = [f[:-4] for f in os.listdir(catcher_folder) if f.endswith('.png')]
 
+
+print(xstats_df)
 @app.route('/')
 def home():
     return render_template('index.html')
