@@ -6,6 +6,7 @@ app = Flask(__name__)
 stuff_df = pd.read_csv('csvs/stuff+.csv')
 location_df = pd.read_csv('csvs/location+.csv')
 pitching_df = pd.read_csv('csvs/pitching+.csv')
+xstats_df = pd.read_csv('csvs/leaderboard_savant.csv')
 
 pitcher_folder = os.path.join(app.static_folder, 'Usages')
 catcher_folder = os.path.join(app.static_folder, 'CatcherReports')
@@ -44,7 +45,7 @@ def stuff():
 
 @app.route('/xstats')
 def xstats():
-    return render_template('xstats.html', pitchers=pitchers)
+    return render_template('xstats.html', pitchers=pitchers, xstats_df=xstats_df.to_dict('records'))
 
 @app.route('/catcher')
 def catcher():

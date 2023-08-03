@@ -106,7 +106,7 @@ hr {
   height: auto;
 }
 
-#stuffWrapper, #locationWrapper, #pitchingWrapper {
+#stuffWrapper, #locationWrapper, #pitchingWrapper, #xstatsWrapper {
     margin-left: 200px;
     margin-right: 200px;
     align-items: center;
