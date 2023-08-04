@@ -232,4 +232,19 @@ header li {
     .textbox {
         width: 80vw;
     }
+
+    #stuffWrapper, #locationWrapper, #pitchingWrapper {
+        width: 100vw;
+        justify-content: center;
+    }
+
+   body {
+        text-align: center; /* Center the content on mobile */
+    }
+
+    /* Adjust table styles for mobile */
+    table {
+        margin: 0 auto; /* Center the table horizontally */
+        width: 100%; /* Make the table take full width on mobile */
+    }
 }
