@@ -5,6 +5,14 @@ body {
     background-color: #ffffff;
 }
 
+a {
+  text-decoration: none;
+}
+
+a {
+  color: #000;
+}
+
 header {
     font-family: 'Roboto Mono', monospace !important;
     font-size: 12pt;
