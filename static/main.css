@@ -6,11 +6,11 @@ body {
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 a {
-  color: #000;
+    color: #000;
 }
 
 header {
@@ -104,14 +104,14 @@ img {
 }
 
 hr {
-    color:black;
+    color: black;
 }
 
 #umpLeaderboard {
     display: block;
-  margin: 0 auto;
-  max-width: 800%;
-  height: auto;
+    margin: 0 auto;
+    max-width: 800%;
+    height: auto;
 }
 
 #stuffWrapper, #locationWrapper, #pitchingWrapper, #xstatsWrapper {
@@ -139,7 +139,6 @@ header li {
     font-size: .95rem;
     margin-bottom: 20px;
 }
-
 
 
 .row-flex, #indexContainer {
@@ -174,7 +173,7 @@ header li {
     margin-left: 50px;
 }
 
-#pitchingWrapper, #xstatsWrapper, #plotContainer  {
+#pitchingWrapper, #xstatsWrapper, #plotContainer {
     margin-bottom: 30px;
 }
 
@@ -228,10 +227,10 @@ header li {
     }
 
     .content-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
     #slammersContainer {
         max-width: 60%;
@@ -246,13 +245,16 @@ header li {
         justify-content: center;
     }
 
-   body {
+    body {
         text-align: center; /* Center the content on mobile */
     }
 
-    /* Adjust table styles for mobile */
-    table {
-        margin: 0 auto; /* Center the table horizontally */
-        width: 100%; /* Make the table take full width on mobile */
+    #stuffLeaderboard, #locationLeaderboard, #pitchingLeaderboard {
+        max-width: 300px;
+        justify-content: center;
+    }
+
+     .header-content {
+        max-width: 100%;
     }
 }
