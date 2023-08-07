@@ -26,25 +26,27 @@
     </header>
     <hr>
     <main class="container">
-        <p style="text-align: center;">Select a catcher to view their plot:</p>
-        <div id="selectContainer" class="d-flex justify-content-center">
-            <select id="catcherSelect" class="col-12 form-control">
-                {% for catcher in catchers %}
-                <option value="{{ catcher }}">{{ catcher }}</option>
-                {% endfor %}
-            </select>
+    <p style="text-align: center;">Select a catcher to view their plot:</p>
+    <div id="selectContainer" class="d-flex justify-content-center">
+        <select id="catcherSelect" class="col-12 form-control">
+            {% for catcher in catchers %}
+            <option value="{{ catcher }}">{{ catcher }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="row-flex">
+        <div id="catcherPlotContainer" class="col-lg-6 col-md-12">
+            <img id="catcherImage" src="" class="img-fluid">
         </div>
-        <div class="row-flex">
-            <div id=catcherPlotContainer" class="col-md-6">
-                <img id="catcherImage" src="" class="img-fluid">
-            </div>
-            <div id="leaderboardContainer" class="col-md-6">
-                <div id="catcherLeaderboard">
-                    <img src="../static/images/catcherLeaderboard.png" class="img-fluid">
-                </div>
+        <div id="leaderboardContainer" class="col-lg-6 col-md-0 d-none d-md-block">
+            <div id="catcherLeaderboard">
+                <img src="../static/images/catcherLeaderboard.png" class="img-fluid">
             </div>
         </div>
-    </main>
+    </div>
+</main>
+
+
 </body>
 
 </html>

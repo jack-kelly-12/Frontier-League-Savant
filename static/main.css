@@ -83,7 +83,7 @@ img {
 
 }
 
-#plotContainer,#catcherPlotContainer\" {
+#plotContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -254,7 +254,10 @@ header li {
         justify-content: center;
     }
 
-     .header-content {
-        max-width: 100%;
+    #catcherPlotContainer img {
+        max-width: 100%; /* Ensure the image doesn't exceed container width */
+        height: auto; /* Maintain image aspect ratio */
+        margin: 0;
     }
+
 }
