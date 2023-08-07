@@ -240,18 +240,8 @@ header li {
         width: 80vw;
     }
 
-    #stuffWrapper, #locationWrapper, #pitchingWrapper {
-        width: 100vw;
-        justify-content: center;
-    }
-
     body {
         text-align: center; /* Center the content on mobile */
-    }
-
-    #stuffLeaderboard, #locationLeaderboard, #pitchingLeaderboard {
-        max-width: 300px;
-        justify-content: center;
     }
 
     #catcherPlotContainer img {
@@ -260,4 +250,17 @@ header li {
         margin: 0;
     }
 
+    #plusWrapper {
+        overflow-x: auto; /* Enable horizontal scrolling for the table */
+    }
+
+    #stuffWrapper, #locationWrapper, #pitchingWrapper {
+        width: auto; /* Allow the table to expand its width */
+    }
+
+    .show-mobile {
+        display: none; /* Hide columns on mobile */
+    }
 }
+
+

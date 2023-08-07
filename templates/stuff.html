@@ -36,13 +36,13 @@
                 <thead>
                 <tr>
                     <th>Pitcher</th>
-                    <th>FB+</th>
-                    <th>CB+</th>
-                    <th>SI+</th>
-                    <th>CUT+</th>
-                    <th>SPL+</th>
-                    <th>CH+</th>
-                    <th>SL+</th>
+                    <th class="show-mobile">FB+</th>
+                    <th class="show-mobile">CB+</th>
+                    <th class="show-mobile">SI+</th>
+                    <th class="show-mobile">CUT+</th>
+                    <th class="show-mobile">SPL+</th>
+                    <th class="show-mobile">CH+</th>
+                    <th class="show-mobile">SL+</th>
                     <th>Stuff+</th>
                 </tr>
                 </thead>
@@ -50,13 +50,13 @@
                 {% for row in stuff_data %}
                     <tr>
                         <td>{{ row['Pitcher'] }}</td>
-                        <td>{{ row['FB+'] }}</td>
-                        <td>{{ row['CB+'] }}</td>
-                        <td>{{ row['SI+'] }}</td>
-                        <td>{{ row['CUT+'] }}</td>
-                        <td>{{ row['SPL+'] }}</td>
-                        <td>{{ row['CH+'] }}</td>
-                        <td>{{ row['SL+'] }}</td>
+                        <td class="show-mobile">{{ row['FB+'] }}</td>
+                        <td class="show-mobile">{{ row['CB+'] }}</td>
+                        <td class="show-mobile">{{ row['SI+'] }}</td>
+                        <td class="show-mobile">{{ row['CUT+'] }}</td>
+                        <td class="show-mobile">{{ row['SPL+'] }}</td>
+                        <td class="show-mobile">{{ row['CH+'] }}</td>
+                        <td class="show-mobile">{{ row['SL+'] }}</td>
                         <td>{{ row['Stuff+'] }}</td>
                     </tr>
                 {% endfor %}
@@ -70,13 +70,13 @@
                 <thead>
                 <tr>
                     <th>Pitcher</th>
-                    <th>FB+</th>
-                    <th>CB+</th>
-                    <th>SI+</th>
-                    <th>CUT+</th>
-                    <th>SPL+</th>
-                    <th>CH+</th>
-                    <th>SL+</th>
+                    <th class="show-mobile">FB+</th>
+                    <th class="show-mobile">CB+</th>
+                    <th class="show-mobile">SI+</th>
+                    <th class="show-mobile">CUT+</th>
+                    <th class="show-mobile">SPL+</th>
+                    <th class="show-mobile">CH+</th>
+                    <th class="show-mobile">SL+</th>
                     <th>Location+</th>
                 </tr>
                 </thead>
@@ -84,14 +84,13 @@
                 {% for row in location_data %}
                     <tr>
                         <td>{{ row['Pitcher'] }}</td>
-                        <td>{{ row['FB+'] }}</td>
-                        <td>{{ row['CB+'] }}</td>
-                        <td>{{ row['SI+'] }}</td>
-                        <td>{{ row['CUT+'] }}</td>
-                        <td>{{ row['SPL+'] }}</td>
-                        <td>{{ row['CH+'] }}</td>
-                        <td>{{ row['SL+'] }}</td>
-                        `
+                        <td class="show-mobile">{{ row['FB+'] }}</td>
+                        <td class="show-mobile">{{ row['CB+'] }}</td>
+                        <td class="show-mobile">{{ row['SI+'] }}</td>
+                        <td class="show-mobile">{{ row['CUT+'] }}</td>
+                        <td class="show-mobile">{{ row['SPL+'] }}</td>
+                        <td class="show-mobile">{{ row['CH+'] }}</td>
+                        <td class="show-mobile">{{ row['SL+'] }}</td>
                         <td>{{ row['Location+'] }}</td>
                     </tr>
                 {% endfor %}
@@ -105,29 +104,27 @@
                 <thead>
                 <tr>
                     <th>Pitcher</th>
-                    <th>FB+</th>
-                    <th>CB+</th>
-                    <th>SI+</th>
-                    <th>CUT+</th>
-                    <th>SPL+</th>
-                    <th>CH+</th>
-                    <th>SL+</th>
+                    <th class="show-mobile">FB+</th>
+                    <th class="show-mobile">CB+</th>
+                    <th class="show-mobile">SI+</th>
+                    <th class="show-mobile">CUT+</th>
+                    <th class="show-mobile">SPL+</th>
+                    <th class="show-mobile">CH+</th>
+                    <th class="show-mobile">SL+</th>
                     <th>Pitching+</th>
-                    <!-- Add other column headers here -->
                 </tr>
                 </thead>
                 <tbody>
                 {% for row in pitching_data %}
                     <tr>
                         <td>{{ row['Pitcher'] }}</td>
-                        <td>{{ row['FB+'] }}</td>
-                        <td>{{ row['CB+'] }}</td>
-                        <td>{{ row['SI+'] }}</td>
-                        <td>{{ row['CUT+'] }}</td>
-                        <td>{{ row['SPL+'] }}</td>
-                        <td>{{ row['CH+'] }}</td>
-                        <td>{{ row['SL+'] }}</td>
-                        `
+                        <td class="show-mobile">{{ row['FB+'] }}</td>
+                        <td class="show-mobile">{{ row['CB+'] }}</td>
+                        <td class="show-mobile">{{ row['SI+'] }}</td>
+                        <td class="show-mobile">{{ row['CUT+'] }}</td>
+                        <td class="show-mobile">{{ row['SPL+'] }}</td>
+                        <td class="show-mobile">{{ row['CH+'] }}</td>
+                        <td class="show-mobile">{{ row['SL+'] }}</td>
                         <td>{{ row['Pitching+'] }}</td>
                     </tr>
                 {% endfor %}
