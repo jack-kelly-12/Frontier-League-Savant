@@ -7,6 +7,7 @@ stuff_df = pd.read_csv('csvs/stuff+.csv')
 location_df = pd.read_csv('csvs/location+.csv')
 pitching_df = pd.read_csv('csvs/pitching+.csv')
 xstats_df = pd.read_csv('csvs/leaderboard_savant.csv')
+umpire_leaderboard_df = pd.read_csv('csvs/umpireLeaderboard.csv')
 
 pitcher_folder = os.path.join(app.static_folder, 'Usages')
 catcher_folder = os.path.join(app.static_folder, 'CatcherReports')
@@ -21,7 +22,7 @@ def home():
 
 @app.route('/umpire')
 def umpire():
-    return render_template('umpire.html')
+    return render_template('umpire.html', umpire_leaderboard_df=umpire_leaderboard_df.to_dict('records'))
 
 
 @app.route('/umpires')

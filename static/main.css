@@ -107,14 +107,8 @@ hr {
     color: black;
 }
 
-#umpLeaderboard {
-    display: block;
-    margin: 0 auto;
-    max-width: 800%;
-    height: auto;
-}
 
-#stuffWrapper, #locationWrapper, #pitchingWrapper, #xstatsWrapper {
+#stuffWrapper, #locationWrapper, #pitchingWrapper, #xstatsWrapper, #umpWrapper {
     max-width: 80%;
     margin: 0 auto;
     align-items: center;
@@ -214,7 +208,7 @@ header li {
     #xstatsWrapper,
     #stuffWrapper,
     #locationWrapper,
-    #pitchingWrapper {
+    #pitchingWrapper , #umpLeaderboardTable {
         flex-direction: column; /* Change the flex direction to column for smaller screens */
     }
 
@@ -254,7 +248,7 @@ header li {
         overflow-x: auto; /* Enable horizontal scrolling for the table */
     }
 
-    #stuffWrapper, #locationWrapper, #pitchingWrapper {
+    #stuffWrapper, #locationWrapper, #pitchingWrapper, #umpWrapper {
         width: auto; /* Allow the table to expand its width */
     }
 
