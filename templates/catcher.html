@@ -26,15 +26,21 @@
         </nav>
     </header>
     <hr>
-    <main class="container">
+    <main>
     <p style="text-align: center;">Select a catcher to view their plot:</p>
-    <div id="selectContainer" class="d-flex justify-content-center">
-        <select id="catcherSelect" class="col-12 form-control">
-            {% for catcher in catchers %}
-            <option value="{{ catcher }}">{{ catcher }}</option>
-            {% endfor %}
-        </select>
+        <div id="selectContainer" class="d-flex justify-content-center">
+            <select id="catcherSelect" class="col-12 form-control">
+                {% for catcher in catchers %}
+                <option value="{{ catcher }}">{{ catcher }}</option>
+                {% endfor %}
+            </select>
     </div>
+    <div class="row justify-content-center">
+        <div id="catcherPlotContainer" class="col-12 text-center">
+            <img id="catcherImage" src="" class="img-fluid">
+        </div>
+    </div>
+
     <div class="row-flex">
         <table id="catcherLeaderboardTable" class="display">
                 <thead>
@@ -63,10 +69,13 @@
     <script>
     $(document).ready(function () {
         function applyCustomRenderingCallback(settings) {
-            var dataTableUmp = $('#catcherLeaderboardTable').DataTable({
+            // Reapply custom rendering after filtering or sorting for Stuff+
+
+            $('#catcherLeaderboardTable').DataTable({
                 columnDefs: [{
                     targets: "_all",
                     render: function (data, type, row, meta) {
+                        // Format as a whole number if it's a number
                         if ($.isNumeric(data)) {
                             if (meta.col !== 4) {
                                 return Number(data).toFixed(1);
@@ -84,6 +93,22 @@
         applyCustomRenderingCallback();
     });
 </script>
+    <script>$(document).ready(function () {
+        // Function to update the image when the dropdown selection changes
+        function updateImageCatcher() {
+            var selectedCatcher = $("#catcherSelect").val();
+            var imagePath = "/static/CatcherReports/" + selectedCatcher + ".png";
+            $("#catcherImage").attr("src", imagePath);
+        }
+
+        // Call the updateImage function initially to set the image based on the first option
+        updateImageCatcher();
+
+        // Listen for changes to the dropdown selection
+        $("#catcherSelect").change(function () {
+            updateImageCatcher();
+        });
+    });</script>
 </main>
 
 

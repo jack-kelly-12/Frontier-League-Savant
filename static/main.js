@@ -47,20 +47,3 @@ $(document).ready(function () {
             updateImage();
         });
     });
-
-$(document).ready(function () {
-        // Function to update the image when the dropdown selection changes
-        function updateImageCatcher() {
-            var selectedCatcher = $("#catcherSelect").val();
-            var imagePath = "/static/CatcherReports/" + selectedCatcher + ".png";
-            $("#catcherImage").attr("src", imagePath);
-        }
-
-        // Call the updateImage function initially to set the image based on the first option
-        updateImageCatcher();
-
-        // Listen for changes to the dropdown selection
-        $("#catcherSelect").change(function () {
-            updateImageCatcher();
-        });
-    });
