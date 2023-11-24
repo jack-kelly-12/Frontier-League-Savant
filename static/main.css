@@ -1,5 +1,5 @@
 body {
-    font-family: 'Roboto Mono', monospace !important;
+    font-family: 'Roboto Mono', monospace;
     margin: 0;
     padding: 0;
     background-color: #ffffff;
@@ -182,7 +182,7 @@ header li {
 }
 
 .textbox {
-    background-color: gray;
+    background-color: grey;
     color: white;
 }
 
@@ -208,8 +208,8 @@ header li {
     #xstatsWrapper,
     #stuffWrapper,
     #locationWrapper,
-    #pitchingWrapper , #umpLeaderboardTable, #catcherLeaderboardTable {
-        flex-direction: column; /* Change the flex direction to column for smaller screens */
+    #pitchingWrapper , #umpLeaderboardTable {
+        flex-direction: column;
     }
 
     #plusWrapper {
@@ -235,25 +235,25 @@ header li {
     }
 
     body {
-        text-align: center; /* Center the content on mobile */
+        text-align: center;
     }
 
     #catcherPlotContainer img {
-        max-width: 100%; /* Ensure the image doesn't exceed container width */
-        height: auto; /* Maintain image aspect ratio */
+        max-width: 100%;
+        height: auto;
         margin: 0;
     }
 
     #plusWrapper {
-        overflow-x: auto; /* Enable horizontal scrolling for the table */
+        overflow-x: auto;
     }
 
     #stuffWrapper, #locationWrapper, #pitchingWrapper, #umpWrapper {
-        width: auto; /* Allow the table to expand its width */
+        width: auto;
     }
 
     .show-mobile {
-        display: none; /* Hide columns on mobile */
+        display: none;
     }
 }
 
