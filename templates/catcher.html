@@ -51,8 +51,8 @@
                     <tr>
                         <td>{{ row['Catcher'] }}</td>
                         <td>{{ row['Framing Runs'] }}</td>
-                        <td>{{ row['Left Side Strike %	'] }}</td>
-                        <td>{{ row['Right Side Strike %	'] }}</td>
+                        <td>{{ row['Left Side Strike %'] }}</td>
+                        <td>{{ row['Right Side Strike %'] }}</td>
                         <td>{{ row['Num. Pitches'] }}</td>
                     </tr>
                     {% endfor %}
@@ -63,13 +63,10 @@
     <script>
     $(document).ready(function () {
         function applyCustomRenderingCallback(settings) {
-            // Reapply custom rendering after filtering or sorting for Stuff+
-
             var dataTableUmp = $('#catcherLeaderboardTable').DataTable({
                 columnDefs: [{
                     targets: "_all",
                     render: function (data, type, row, meta) {
-                        // Format as a whole number if it's a number
                         if ($.isNumeric(data)) {
                             if (meta.col !== 4) {
                                 return Number(data).toFixed(1);

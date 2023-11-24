@@ -8,6 +8,8 @@ location_df = pd.read_csv('csvs/location+.csv')
 pitching_df = pd.read_csv('csvs/pitching+.csv')
 xstats_df = pd.read_csv('csvs/leaderboard_savant.csv')
 umpire_leaderboard_df = pd.read_csv('csvs/umpireLeaderboard.csv')
+catcher_leaderboard_df = pd.read_csv('csvs/catcherLeaderboard.csv')
+
 
 pitcher_folder = os.path.join(app.static_folder, 'Usages')
 catcher_folder = os.path.join(app.static_folder, 'CatcherReports')
@@ -51,7 +53,7 @@ def xstats():
 
 @app.route('/catcher')
 def catcher():
-    return render_template('catcher.html', catchers=catchers)
+    return render_template('catcher.html', catchers=catchers, catcher_leaderboard_df=catcher_leaderboard_df)
 
 
 if __name__ == '__main__':
