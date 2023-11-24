@@ -5,18 +5,16 @@ import pandas as pd
 app = Flask(__name__)
 stuff_df = pd.read_csv('csvs/stuff+.csv')
 location_df = pd.read_csv('csvs/location+.csv')
-pitching_df = pd.read_csv('csvs/pitching+.csv')
 xstats_df = pd.read_csv('csvs/leaderboard_savant.csv')
 umpire_leaderboard_df = pd.read_csv('csvs/umpireLeaderboard.csv')
 catcher_leaderboard_df = pd.read_csv('csvs/catcherLeaderboard.csv')
-
 
 pitcher_folder = os.path.join(app.static_folder, 'Usages')
 catcher_folder = os.path.join(app.static_folder, 'CatcherReports')
 pitchers = [f[:-4] for f in os.listdir(pitcher_folder) if f.endswith('.png')]
 catchers = [f[:-4] for f in os.listdir(catcher_folder) if f.endswith('.png')]
 
-# Umpire Reports
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -43,8 +41,7 @@ def umpire_report_image(umpire, filename):
 def stuff():
     pd.options.display.float_format = '{:,.0f}'.format
     return render_template('stuff.html', stuff_data=stuff_df.to_dict('records'),
-                           location_data=location_df.to_dict('records'),
-                           pitching_data=pitching_df.to_dict('records'))
+                           location_data=location_df.to_dict('records'))
 
 
 @app.route('/xstats')
@@ -53,7 +50,7 @@ def xstats():
 
 @app.route('/catcher')
 def catcher():
-    return render_template('catcher.html', catchers=catchers, catcher_leaderboard_df=catcher_leaderboard_df)
+    return render_template('catcher.html', catchers=catchers, catcher_leaderboard_df=catcher_leaderboard_df.to_dict('records'))
 
 
 if __name__ == '__main__':

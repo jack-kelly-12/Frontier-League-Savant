@@ -108,7 +108,7 @@ hr {
 }
 
 
-#stuffWrapper, #locationWrapper, #pitchingWrapper, #xstatsWrapper, #umpWrapper {
+#stuffWrapper, #locationWrapper, #pitchingWrapper, #xstatsWrapper, #umpWrapper, #catcherWrapper {
     max-width: 80%;
     margin: 0 auto;
     align-items: center;
@@ -158,13 +158,8 @@ header li {
     width: 50%;
 }
 
-#catcherLeaderboard {
-    max-width: 80%;
-    margin-right: 30px;
-}
-
-#catcherImage {
-    margin-left: 50px;
+#catcherPlotContainer {
+        text-align: center;
 }
 
 #pitchingWrapper, #xstatsWrapper, #plotContainer {
@@ -237,6 +232,11 @@ header li {
     body {
         text-align: center;
     }
+
+    #catcherPlotContainer {
+        text-align: center;
+    }
+
 
     #catcherPlotContainer img {
         max-width: 100%;
