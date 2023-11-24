@@ -208,7 +208,7 @@ header li {
     #xstatsWrapper,
     #stuffWrapper,
     #locationWrapper,
-    #pitchingWrapper , #umpLeaderboardTable {
+    #pitchingWrapper , #umpLeaderboardTable, #catcherLeaderboardTable {
         flex-direction: column; /* Change the flex direction to column for smaller screens */
     }
 

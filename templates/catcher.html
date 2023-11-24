@@ -35,13 +35,28 @@
         </select>
     </div>
     <div class="row-flex">
-        <div id="catcherPlotContainer" class="col-lg-6 col-md-12">
-            <img id="catcherImage" src="" class="img-fluid">
-        </div>
-        <div id="leaderboardContainer" class="col-lg-6 col-md-0 d-none d-md-block">
-            <div id="catcherLeaderboard">
-                <img src="../static/images/catcherLeaderboard.png" class="img-fluid">
-            </div>
+        <table id="catcherLeaderboardTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Catcher</th>
+                        <th>Framing Runs</th>
+                        <th>Left Side Strike %	</th>
+                        <th>Right Side Strike %	</th>
+                        <th>Num. Pitches</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in catcher_leaderboard_df %}
+                    <tr>
+                        <td>{{ row['Catcher'] }}</td>
+                        <td>{{ row['Framing Runs'] }}</td>
+                        <td>{{ row['Left Side Strike %	'] }}</td>
+                        <td>{{ row['Right Side Strike %	'] }}</td>
+                        <td>{{ row['Num. Pitches'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 </main>

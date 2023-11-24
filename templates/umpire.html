@@ -45,6 +45,7 @@
                         <th>Total Pitch Accuracy</th>
                         <th>Called Ball Accuracy</th>
                         <th>Called Strike Accuracy</th>
+                        <th>Num. Pitches Called</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,6 +55,7 @@
                         <td>{{ row['Total Pitch Accuracy'] }}</td>
                         <td>{{ row['Called Ball Accuracy'] }}</td>
                         <td>{{ row['Called Strike Accuracy'] }}</td>
+                        <td>{{ row['Num. Pitches Called'] }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -70,7 +72,12 @@
                     render: function (data, type, row, meta) {
                         // Format as a whole number if it's a number
                         if ($.isNumeric(data)) {
-                            return Number(data).toFixed(3);
+                            if (meta.col !== 4) {
+                                return Number(data).toFixed(1);
+                            }
+                            else {
+                                return Number(data).toFixed(0);
+                            }
                         }
                         return data;
                     }
