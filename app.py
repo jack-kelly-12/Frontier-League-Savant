@@ -44,13 +44,15 @@ def stuff():
                            location_data=location_df.to_dict('records'))
 
 
-@app.route('/xstats')
+@app.route('/hitters')
 def xstats():
-    return render_template('xstats.html', pitchers=pitchers, xstats_df=xstats_df.to_dict('records'))
+    return render_template('hitters.html', pitchers=pitchers, xstats_df=xstats_df.to_dict('records'))
+
 
 @app.route('/catcher')
 def catcher():
-    return render_template('catcher.html', catchers=catchers, catcher_leaderboard_df=catcher_leaderboard_df.to_dict('records'))
+    return render_template('catcher.html', catchers=catchers,
+                           catcher_leaderboard_df=catcher_leaderboard_df.to_dict('records'))
 
 
 if __name__ == '__main__':

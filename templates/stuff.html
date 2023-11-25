@@ -20,9 +20,9 @@
         <nav>
             <ul>
                 <li><a class="active" href="stuff">Stuff+ Leaderboard</a></li>
-                <li><a href="xstats">xStats Leaderboard</a></li>
-                <li><a href="umpire">Umpire Reports</a></li>
-                <li><a href="catcher">Catcher Reports</a></li>
+                <li><a href="hitters">Hitters</a></li>
+                <li><a href="umpire">Umpires</a></li>
+                <li><a href="catcher">Catchers</a></li>
             </ul>
         </nav>
     </div>
@@ -135,46 +135,24 @@
 
     <script>
         $(document).ready(function () {
-            function applyCustomRenderingCallback(settings) {
-                // Reapply custom rendering after filtering or sorting for Stuff+
-                $('#stuffLeaderboard td[data-colname="Stuff+"]').each(function () {
-                    var cell = $(this);
-                    var value = parseFloat(cell.text());
-                });
-
-                // Reapply custom rendering after filtering or sorting for Location+
-                $('#locationLeaderboard td[data-colname="Stuff+"]').each(function () {
-                    var cell = $(this);
-                    var value = parseFloat(cell.text());
-                });
-
-                // Reapply custom rendering after filtering or sorting for Pitching+
-                $('#pitchingLeaderboard td[data-colname="Stuff+"]').each(function () {
-                    var cell = $(this);
-                    var value = parseFloat(cell.text());
-                });
-
-                // Hide 'nan' values visually for Stuff+
+            function applyCustomRenderingCallback() {
                 $('#stuffLeaderboard td:contains("nan")').each(function () {
                     $(this).text('');
                 });
 
-                // Hide 'nan' values visually for Location+
                 $('#locationLeaderboard td:contains("nan")').each(function () {
                     $(this).text('');
                 });
 
-                // Hide 'nan' values visually for Pitching+
                 $('#pitchingLeaderboard td:contains("nan")').each(function () {
                     $(this).text('');
                 });
             }
 
-            var dataTableStuff = $('#stuffLeaderboard').DataTable({
+            $('#stuffLeaderboard').DataTable({
                 columnDefs: [{
                     targets: "_all",
-                    render: function (data, type, row, meta) {
-                        // Format as whole number if it's a number
+                    render: function (data) {
                         if ($.isNumeric(data)) {
                             return Number(data).toFixed(0);
                         }
@@ -183,7 +161,7 @@
                 },
                     {
                         targets: "td[data-colname='Stuff+']",
-                        render: function (data, type, row, meta) {
+                        render: function (data) {
                             return applyCustomRendering(data);
                         }
                     }
@@ -191,11 +169,10 @@
                 drawCallback: applyCustomRenderingCallback,
             });
 
-            var dataTableLocation = $('#locationLeaderboard').DataTable({
+            $('#locationLeaderboard').DataTable({
                 columnDefs: [{
                     targets: "_all",
-                    render: function (data, type, row, meta) {
-                        // Format as whole number if it's a number
+                    render: function (data) {
                         if ($.isNumeric(data)) {
                             return Number(data).toFixed(0);
                         }
@@ -212,11 +189,10 @@
                 drawCallback: applyCustomRenderingCallback,
             });
 
-            var dataTablePitching = $('#pitchingLeaderboard').DataTable({
+            $('#pitchingLeaderboard').DataTable({
                 columnDefs: [{
                     targets: "_all",
-                    render: function (data, type, row, meta) {
-                        // Format as whole number if it's a number
+                    render: function (data) {
                         if ($.isNumeric(data)) {
                             return Number(data).toFixed(0);
                         }
@@ -225,7 +201,7 @@
                 },
                     {
                         targets: "td[data-colname='Pitching+']",
-                        render: function (data, type, row, meta) {
+                        render: function (data) {
                             return applyCustomRendering(data);
                         }
                     }

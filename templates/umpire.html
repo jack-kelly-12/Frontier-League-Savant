@@ -13,82 +13,110 @@
 </head>
 
 <body>
-    <header>
-<h1><a href="/">Frontier League Savant</a></h1>        <hr>
-        <nav>
-            <ul>
-                <li><a href="stuff">Stuff+ Leaderboard</a></li>
-                <li><a href="xstats">xStats Leaderboard</a></li>
-                <li><a class="active" href="umpire">Umpire Reports</a></li>
-                <li><a href="catcher">Catcher Reports</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <h1><a href="/">Frontier League Savant</a></h1>
     <hr>
-    <main>
-        <p style="text-align: center;">Select an umpire:</p>
-        <div id="selectContainer">
-            <select id="umpireSelect">
-                {% for umpire in umpires %}
+    <nav>
+        <ul>
+            <li><a href="stuff">Pitchers</a></li>
+            <li><a href="hitters">Hitters</a></li>
+            <li><a class="active" href="umpire">Umpire Reports</a></li>
+            <li><a href="catcher">Catcher Reports</a></li>
+        </ul>
+    </nav>
+</header>
+<hr>
+<main>
+    <p style="text-align: center;">Select an umpire:</p>
+    <div id="selectContainer">
+        <select id="umpireSelect">
+            {% for umpire in umpires %}
                 <option value="{{ umpire }}">{{ umpire }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div id="plotContainer">
+            {% endfor %}
+        </select>
+    </div>
+    <div id="plotContainer">
 
-        </div>
+    </div>
     <div id="umpWrapper">
-            <table id="umpLeaderboardTable" class="display">
-                <thead>
-                    <tr>
-                        <th>Umpire</th>
-                        <th>Total Pitch Accuracy</th>
-                        <th>Called Ball Accuracy</th>
-                        <th>Called Strike Accuracy</th>
-                        <th>Num. Pitches Called</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for row in umpire_leaderboard_df %}
-                    <tr>
-                        <td>{{ row['Umpire'] }}</td>
-                        <td>{{ row['Total Pitch Accuracy'] }}</td>
-                        <td>{{ row['Called Ball Accuracy'] }}</td>
-                        <td>{{ row['Called Strike Accuracy'] }}</td>
-                        <td>{{ row['Num. Pitches Called'] }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+        <table id="umpLeaderboardTable" class="display">
+            <thead>
+            <tr>
+                <th>Umpire</th>
+                <th>Total Pitch Accuracy</th>
+                <th>Called Ball Accuracy</th>
+                <th>Called Strike Accuracy</th>
+                <th>Num. Pitches Called</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in umpire_leaderboard_df %}
+                <tr>
+                    <td>{{ row['Umpire'] }}</td>
+                    <td>{{ row['Total Pitch Accuracy'] }}</td>
+                    <td>{{ row['Called Ball Accuracy'] }}</td>
+                    <td>{{ row['Called Strike Accuracy'] }}</td>
+                    <td>{{ row['Num. Pitches Called'] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
     <script>
-    $(document).ready(function () {
-        function applyCustomRenderingCallback(settings) {
-            // Reapply custom rendering after filtering or sorting for Stuff+
-
-            var dataTableUmp = $('#umpLeaderboardTable').DataTable({
-                columnDefs: [{
-                    targets: "_all",
-                    render: function (data, type, row, meta) {
-                        // Format as a whole number if it's a number
-                        if ($.isNumeric(data)) {
-                            if (meta.col !== 4) {
-                                return Number(data).toFixed(1);
+        $(document).ready(function () {
+            function applyCustomRenderingCallback() {
+                $('#umpLeaderboardTable').DataTable({
+                    columnDefs: [{
+                        targets: "_all",
+                        render: function (data, type, row, meta) {
+                            if ($.isNumeric(data)) {
+                                if (meta.col !== 4) {
+                                    return Number(data).toFixed(1);
+                                } else {
+                                    return Number(data).toFixed(0);
+                                }
                             }
-                            else {
-                                return Number(data).toFixed(0);
-                            }
+                            return data;
                         }
-                        return data;
-                    }
-                }],
-            });
+                    }],
+                });
+            }
+
+            applyCustomRenderingCallback();
+        });
+    </script>
+    <script>
+        function updateDisplayedImages(selectedUmpire) {
+            $('#plotContainer').empty();
+            const imageNames = ['edge_calls.png', 'heat_maps.png', 'total.png']; // Image filenames
+            for (const imageName of imageNames) {
+                const imagePath = `UmpireReports/${selectedUmpire}/${imageName}`;
+                const imgElement = $('<img>').attr('src', imagePath);
+                $('#plotContainer').append(imgElement);
+            }
         }
-        // Call the function after defining it
-        applyCustomRenderingCallback();
-    });
-</script>
-    </main>
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.get('/umpires', function (data) {
+                const umpires = data.umpires;
+                const umpireSelect = $('#umpireSelect');
+
+                umpires.forEach((umpire) => {
+                    const option = $('<option>').val(umpire).text(umpire);
+                    umpireSelect.append(option);
+                });
+
+                umpireSelect.change(function () {
+                    const selectedUmpire = $(this).val();
+                    updateDisplayedImages(selectedUmpire);
+                });
+
+                updateDisplayedImages(umpireSelect.val());
+            });
+        });
+    </script>
+</main>
 
 </body>
 
