@@ -3,8 +3,8 @@
 1,Jesen Therrien,Fastball,Fastball,Slider,Fastball
 2,Christian Lopez,Cutter,Cutter,Fastball,Fastball
 3,Garrett Christman,Fastball,Fastball,Fastball,Fastball
-4,Damon Casetta-stubbs,Fastball,Fastball,Slider,Fastball
-5,July Sosa,Fastball,Fastball,Fastball,Fastball
+4,Damon Casetta-stubbs,Fastball,Fastball,Fastball,Fastball
+5,July Sosa,Fastball,Fastball,Slider,Fastball
 6,Matt Mulhearn,Fastball,Fastball,Fastball,Fastball
 7,John Baker,Fastball,Fastball,Fastball,Fastball
 8,Stephen Chamblee,Fastball,Fastball,Fastball,Fastball
@@ -16,7 +16,7 @@
 14,Dylan Castaneda,Fastball,Fastball,Fastball,Fastball
 15,Franklin Parra,Fastball,Fastball,Fastball,Fastball
 16,Nick Garcia,Fastball,Fastball,Fastball,Fastball
-17,Nate Garkow,Fastball,Fastball,Fastball,Fastball
+17,Nate Garkow,Fastball,Fastball,Changeup,Fastball
 18,Dan Bebee,Fastball,Fastball,Fastball,Fastball
 19,Frank Moscatiello,Fastball,Fastball,Fastball,Fastball
 20,Justin Miller,Fastball,Fastball,Fastball,Fastball
@@ -25,7 +25,7 @@
 23,Jd Hammer,Fastball,Fastball,Fastball,Fastball
 24,Ryan Sandberg,Fastball,Fastball,Fastball,Fastball
 25,Carter Spivey,Fastball,Fastball,Fastball,Fastball
-26,Osman Gutierrez,Sinker,Sinker,Cutter,Sinker
+26,Osman Gutierrez,Sinker,Sinker,Sinker,Sinker
 27,Justin Watland,Fastball,Fastball,Slider,Fastball
 28,Miguel Reyes,Fastball,Fastball,Slider,Fastball
 29,Tanner Jesson-dalton,Fastball,Fastball,Fastball,Fastball
@@ -43,7 +43,7 @@
 41,Shumpei Yoshikawa,Fastball,Fastball,Fastball,Fastball
 42,Cole Bellair,Fastball,Fastball,Fastball,Fastball
 43,Brayden Bonner,Sinker,Sinker,Slider,Sinker
-44,Steven Fuentes,Fastball,Fastball,Fastball,Fastball
+44,Steven Fuentes,Fastball,Fastball,Slider,Fastball
 45,Garrison Bryant,Sinker,Sinker,Sinker,Sinker
 46,Austin Grossman,Sinker,Slider,Slider,Sinker
 47,Rafi Vazquez,Sinker,Sinker,Slider,Sinker
@@ -56,9 +56,9 @@
 54,Trevor Tietz,Fastball,Fastball,Fastball,Fastball
 55,Cam Aufderheide,Fastball,Fastball,Fastball,Fastball
 56,Arrison Perez,Fastball,Fastball,Fastball,Fastball
-57,Evan Braband,Fastball,Fastball,Fastball,Fastball
+57,Evan Braband,Fastball,Fastball,Curveball,Fastball
 58,Jackson Hickert,Fastball,Fastball,Fastball,Fastball
-59,Jose Ledesma jr.,Fastball,Fastball,Fastball,Fastball
+59,Jose Ledesma jr.,Fastball,Fastball,Curveball,Fastball
 60,Yasel Santana,Fastball,Fastball,Changeup,Fastball
 61,Tucker Smith,Fastball,Fastball,Fastball,Fastball
 62,Brac Warren,Fastball,Fastball,Fastball,Fastball
@@ -68,7 +68,7 @@
 66,Mark Moclair,Fastball,Fastball,Fastball,Fastball
 67,Jonaiker Villalobos,Fastball,Fastball,Fastball,Fastball
 68,Angelo Baez,Fastball,Fastball,Fastball,Fastball
-69,Zach Smith,Fastball,Fastball,Fastball,Fastball
+69,Zach Smith,Fastball,Fastball,Slider,Fastball
 70,Andrew Dietz,Fastball,Fastball,Fastball,Fastball
 71,Garrett Cooper,Fastball,Fastball,Fastball,Fastball
 72,Hayden Shenefield,Fastball,Fastball,Slider,Fastball
@@ -76,17 +76,17 @@
 74,Alex Hart,Fastball,Fastball,Slider,Fastball
 75,Justin Showalter,Sinker,Sinker,Sinker,Sinker
 76,Ruben Ramirez,Fastball,Fastball,Fastball,Fastball
-77,Joey Gonzalez,Fastball,Fastball,Fastball,Fastball
+77,Joey Gonzalez,Fastball,Fastball,Changeup,Fastball
 78,Aaron Glickstein,Fastball,Fastball,Fastball,Fastball
 79,Andy Hammond,Fastball,Fastball,Fastball,Fastball
 80,Ricky Castro,Fastball,Fastball,Fastball,Fastball
 81,Gage Feeney,Sinker,Sinker,Sinker,Sinker
 82,Nick Trabacchi,Fastball,Fastball,Fastball,Fastball
-83,Alec Huertas,Fastball,Fastball,Fastball,Fastball
+83,Alec Huertas,Fastball,Fastball,Changeup,Fastball
 84,Dawson Lane,Fastball,Fastball,Fastball,Fastball
 85,Tyler Jay,Fastball,Fastball,Fastball,Fastball
 86,Zach Gettys,Fastball,Fastball,Fastball,Fastball
-87,Darrien Ragins,Cutter,Cutter,Cutter,Cutter
+87,Darrien Ragins,Cutter,Cutter,Slider,Cutter
 88,Kobe Foster,Fastball,Fastball,Fastball,Fastball
 89,Greg Veliz,Fastball,Fastball,Fastball,Fastball
 90,Luis Perez,Fastball,Fastball,Slider,Fastball
@@ -110,12 +110,12 @@
 108,Bryan Pena,Fastball,Fastball,Fastball,Fastball
 109,Alec Whaley,Slider,Fastball,Slider,Fastball
 110,Griffin Baker,Fastball,Fastball,Fastball,Fastball
-111,Adrien Reese,Fastball,Fastball,Fastball,Fastball
+111,Adrien Reese,Fastball,Fastball,Curveball,Fastball
 112,Jon Beymer,Slider,Sinker,Slider,Sinker
 113,Nate Florence,Fastball,Fastball,Fastball,Fastball
 114,Javier Reynoso,Fastball,Fastball,Slider,Fastball
-115,Chris Burica,Cutter,Cutter,Fastball,Cutter
+115,Chris Burica,Cutter,Cutter,Slider,Cutter
 116,Elijah Gill,Fastball,Fastball,Fastball,Fastball
 117,Kenny Mathews,Fastball,Fastball,Fastball,Fastball
 118,Zac Ryan,Fastball,Fastball,Fastball,Fastball
-119,Mike Reagan,Fastball,Fastball,Fastball,Fastball
+119,Mike Reagan,Fastball,Fastball,Changeup,Fastball
