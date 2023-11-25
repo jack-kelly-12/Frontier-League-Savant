@@ -30,7 +30,19 @@
 
 <hr>
 <main>
+    <p style="text-align: center;">Select a pitcher to view their plot:</p>
+    <div id="selectContainer">
+        <select id="pitcherSelect" class="col-6">
+            {% for pitcher in pitchers %}
+                <option value="{{ pitcher }}">{{ pitcher }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div id="plotContainerPitcher">
+        <img id="pitcherImage" src="" alt="Pitcher Plot">
+    </div>
     <div id="plusWrapper">
+        <h2 class="titles">Plus Models</h2>
         <div id="stuffWrapper">
             <table id="stuffLeaderboard" class="display">
                 <thead>
@@ -131,6 +143,79 @@
                 </tbody>
             </table>
         </div>
+
+
+        <h2 class="titles">Pitch Profile and Usages</h2>
+        <div id="profileWrapper">
+            <table id="profileLeaderboard" class="display">
+                <thead>
+                <tr>
+                    <th>Pitcher</th>
+                    <th>Strike%</th>
+                    <th>Zone%</th>
+                    <th>Whiff%</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in profile_data %}
+                    <tr>
+                        <td>{{ row['Pitcher'] }}</td>
+                        <td>{{ row['Strike%'] }}</td>
+                        <td>{{ row['Zone%'] }}</td>
+                        <td>{{ row['Whiff%'] }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div id="oppWrapper">
+            <table id="oppLeaderboard" class="display">
+                <thead>
+                <tr>
+                    <th>Pitcher</th>
+                    <th>o-xwOBA</th>
+                    <th>o-xBA</th>
+                    <th>o-xSLG</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in opp_data %}
+                    <tr>
+                        <td>{{ row['Pitcher'] }}</td>
+                        <td>{{ row['o-xwOBA'] }}</td>
+                        <td>{{ row['o-xBA'] }}</td>
+                        <td>{{ row['o-xSLG'] }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div id="usageWrapper">
+            <table id="usageLeaderboard" class="display">
+                <thead>
+                <tr>
+                    <th>Pitcher</th>
+                    <th>Most Used Pitch</th>
+                    <th>First Pitch</th>
+                    <th>K Pitch</th>
+                    <th>Needs a Strike Pitch</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in usage_data %}
+                    <tr>
+                        <td>{{ row['Pitcher'] }}</td>
+                        <td>{{ row['Most Used Pitch'] }}</td>
+                        <td>{{ row['First Pitch'] }}</td>
+                        <td>{{ row['K Pitch'] }}</td>
+                        <td>{{ row['Needs a Strike Pitch'] }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script>
@@ -149,6 +234,13 @@
                 });
             }
 
+            function applyCustomRendering(data) {
+                if (isNaN(data)) {
+                    return 0;
+                }
+                return Number(data).toFixed(0);
+            }
+
             $('#stuffLeaderboard').DataTable({
                 columnDefs: [{
                     targets: "_all",
@@ -163,10 +255,18 @@
                         targets: "td[data-colname='Stuff+']",
                         render: function (data) {
                             return applyCustomRendering(data);
-                        }
+                        },
+                        searchable: true,
+                        orderable: true
+                    },
+                    {
+                        targets: [1, 2, 3, 4, 5, 6, 7], // Assuming columns 1 to 7 are not searchable or orderable
+                        searchable: false,
+                        orderable: false
                     }
                 ],
                 drawCallback: applyCustomRenderingCallback,
+
             });
 
             $('#locationLeaderboard').DataTable({
@@ -184,6 +284,11 @@
                         render: function (data, type, row, meta) {
                             return applyCustomRendering(data);
                         }
+                    },
+                    {
+                        targets: [1, 2, 3, 4, 5, 6, 7], // Assuming columns 1 to 7 are not searchable or orderable
+                        searchable: false,
+                        orderable: false
                     }
                 ],
                 drawCallback: applyCustomRenderingCallback,
@@ -204,9 +309,69 @@
                         render: function (data) {
                             return applyCustomRendering(data);
                         }
+                    }, {
+                        targets: [1, 2, 3, 4, 5, 6, 7], // Assuming columns 1 to 7 are not searchable or orderable
+                        searchable: false,
+                        orderable: false
                     }
                 ],
                 drawCallback: applyCustomRenderingCallback,
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            function applyCustomRenderingCallback() {
+                $('#oppLeaderboard').DataTable({
+                    columnDefs: [{
+                        targets: "_all",
+                        render: function (data) {
+                            if ($.isNumeric(data)) {
+                                return Number(data).toFixed(3);
+                            }
+                            return data;
+                        }
+                    }],
+                });
+                $('#profileLeaderboard').DataTable({
+                    columnDefs: [{
+                        targets: "_all",
+                        render: function (data) {
+                            if ($.isNumeric(data)) {
+                                return Number(data).toFixed(3);
+                            }
+                            return data;
+                        }
+                    }],
+                });
+                $('#usageLeaderboard').DataTable({
+                    columnDefs: [{
+                        targets: "_all",
+                        render: function (data) {
+                            if ($.isNumeric(data)) {
+                                return Number(data).toFixed(2);
+                            }
+                            return data;
+                        }
+                    }],
+                });
+            }
+
+            applyCustomRenderingCallback();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            function updateImage() {
+                var selectedPitcher = $("#pitcherSelect").val();
+                var imagePath = "/static/Usages/" + selectedPitcher + ".png";
+                $("#pitcherImage").attr("src", imagePath);
+            }
+
+            updateImage();
+
+            $("#pitcherSelect").change(function () {
+                updateImage();
             });
         });
     </script>

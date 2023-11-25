@@ -109,7 +109,7 @@ hr {
 
 
 #stuffWrapper, #locationWrapper, #pitchingWrapper, #xstatsWrapper, #umpWrapper, #catcherWrapper, #discWrapper,
-#sprayWrapper {
+#sprayWrapper, #profileWrapper, #usageWrapper, #oppWrapper {
     max-width: 80%;
     align-items: center;
     margin: 0 auto 20px;
@@ -117,6 +117,10 @@ hr {
 
 #headerLeaderboard, #catcherLeaderboard {
     margin-left: 200px;
+}
+
+.titles {
+    margin-left: 10%;
 }
 
 #plotContainerPitcher {
