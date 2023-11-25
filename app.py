@@ -1,6 +1,7 @@
-from flask import Flask, render_template, send_from_directory, jsonify
 import os
+
 import pandas as pd
+from flask import Flask, render_template, send_from_directory, jsonify
 
 app = Flask(__name__)
 stuff_df = pd.read_csv('csvs/stuff+.csv')
@@ -8,6 +9,8 @@ location_df = pd.read_csv('csvs/location+.csv')
 xstats_df = pd.read_csv('csvs/leaderboard_savant.csv')
 umpire_leaderboard_df = pd.read_csv('csvs/umpireLeaderboard.csv')
 catcher_leaderboard_df = pd.read_csv('csvs/catcherLeaderboard.csv')
+disc_df = pd.read_csv('csvs/disc_data.csv')
+spray_df = pd.read_csv('csvs/spray_data.csv')
 
 pitcher_folder = os.path.join(app.static_folder, 'Usages')
 catcher_folder = os.path.join(app.static_folder, 'CatcherReports')
@@ -44,9 +47,10 @@ def stuff():
                            location_data=location_df.to_dict('records'))
 
 
-@app.route('/hitters')
+@app.route('/hitter')
 def xstats():
-    return render_template('hitters.html', pitchers=pitchers, xstats_df=xstats_df.to_dict('records'))
+    return render_template('hitters.html', disc_df=disc_df.to_dict('records'), spray_df=spray_df.to_dict('records'),
+                           xstats_df=xstats_df.to_dict('records'))
 
 
 @app.route('/catcher')

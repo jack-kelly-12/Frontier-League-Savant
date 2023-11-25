@@ -39,7 +39,7 @@
             <tbody>
             {% for row in xstats_df %}
                 <tr>
-                    <td>{{ row['batter'] }}</td>
+                    <td>{{ row['Batter'] }}</td>
                     <td>{{ row['xBA'] }}</td>
                     <td>{{ row['xwOBA'] }}</td>
                 </tr>
@@ -47,17 +47,62 @@
             </tbody>
         </table>
     </div>
-    <p style="text-align: center;">Select a pitcher to view their plot:</p>
-    <div id="selectContainer">
-        <select id="pitcherSelect" class="col-6">
-            {% for pitcher in pitchers %}
-                <option value="{{ pitcher }}">{{ pitcher }}</option>
+    <div id="discWrapper">
+        <table id="discLeaderboard" class="display">
+            <thead>
+            <tr>
+                <th>Batter</th>
+                <th class="show-mobile">O-Swing%</th>
+                <th class="show-mobile">Z-Swing%</th>
+                <th>Swing%</th>
+                <th class="show-mobile">O-Contact%</th>
+                <th class="show-mobile">Z-Contact%</th>
+                <th>Contact%</th>
+                <th>SwStr%</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in disc_df %}
+                <tr>
+                    <td>{{ row['Batter'] }}</td>
+                    <td class="show-mobile">{{ row['O-Swing%'] }}</td>
+                    <td class="show-mobile">{{ row['Z-Swing%'] }}</td>
+                    <td>{{ row['Swing%'] }}</td>
+                    <td class="show-mobile">{{ row['O-Contact%'] }}</td>
+                    <td class="show-mobile">{{ row['Z-Contact%'] }}</td>
+                    <td>{{ row['Contact%'] }}</td>
+                    <td>{{ row['SwStr%'] }}</td>
+                </tr>
             {% endfor %}
-        </select>
+            </tbody>
+        </table>
     </div>
-    <div id="plotContainerPitcher">
-        <img id="pitcherImage" src="" alt="Pitcher Plot">
+    <div id="sprayWrapper">
+        <table id="sprayLeaderboard" class="display">
+            <thead>
+            <tr>
+                <th>Batter</th>
+                <th>Avg. EV</th>
+                <th>Avg. LA%</th>
+                <th>Avg. Direction</th>
+                <th>Approach Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in spray_df %}
+                <tr>
+                    <td>{{ row['Batter'] }}</td>
+                    <td>{{ row['Avg. EV'] }}</td>
+                    <td>{{ row['Avg. LA'] }}</td>
+                    <td>{{ row['Avg. Direction'] }}</td>
+                    <td>{{ row['Approach Type'] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
+
+
     <br>
     <script>
         $(document).ready(function () {
@@ -78,6 +123,43 @@
             applyCustomRenderingCallback();
         });
     </script>
+    <script>
+        $(document).ready(function () {
+            function applyCustomRenderingCallback() {
+                $('#sprayLeaderboard').DataTable({
+                    columnDefs: [{
+                        targets: "_all",
+                        render: function (data) {
+                            if ($.isNumeric(data)) {
+                                return Number(data).toFixed(3);
+                            }
+                            return data;
+                        }
+                    }],
+                });
+            }
+
+            applyCustomRenderingCallback();
+        });
+    </script>
+    <script>
+        function applyCustomRenderingCallback() {
+            $('#discLeaderboard').DataTable({
+                columnDefs: [{
+                    targets: "_all",
+                    render: function (data) {
+                        if ($.isNumeric(data)) {
+                            return Number(data).toFixed(3);
+                        }
+                        return data;
+                    }
+                }],
+            });
+        }
+
+        applyCustomRenderingCallback();
+    </script>
+
 
 </main>
 </body>
