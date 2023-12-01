@@ -107,50 +107,8 @@
             });
         });
     </script>
-<script>
-        $(document).ready(function () {
-            function updateImage() {
-                var selectedCatcher = $("#catcherSelect").val();
-                var imagePath = "/static/CatcherReports/" + selectedCatcher + ".png";
-                $("#catcherImage").attr("src", imagePath);
-            }
 
-            updateImage();
 
-            $("#catcherSelect").change(function () {
-                updateImage();
-            });
-        });
-    </script>
-    <script>
-        function loadImage() {
-            var loadingOverlay = document.getElementById('loadingOverlay');
-            loadingOverlay.style.display = 'block';
-
-            var imgSrc = '../static/images/Spinner-1s-200px.gif';
-            var catcherImage = document.getElementById('catcherImage');
-            var newImage = new Image();
-
-            newImage.src = imgSrc;
-
-            newImage.onload = function () {
-                catcherImage.src = imgSrc;
-                loadingOverlay.style.display = 'none';
-            };
-
-            newImage.onerror = function () {
-                console.error('Error loading image');
-                loadingOverlay.style.display = 'none';
-            };
-        }
-
-        $(document).ready(function () {
-            loadImage();
-            $("#catcherSelect").change(function () {
-                loadImage();
-            });
-        });
-    </script>
 </main>
 
 

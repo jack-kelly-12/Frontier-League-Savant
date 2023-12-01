@@ -383,35 +383,7 @@
             });
         });
     </script>
-    <script>
-        function loadImage() {
-            var loadingOverlay = document.getElementById('loadingOverlay');
-            loadingOverlay.style.display = 'block';
 
-            var imgSrc = '';
-            var pitcherImage = document.getElementById('pitcherImage');
-            var newImage = new Image();
-
-            newImage.src = imgSrc;
-
-            newImage.onload = function () {
-                pitcherImage.src = imgSrc;
-                loadingOverlay.style.display = 'none';
-            };
-
-            newImage.onerror = function () {
-                console.error('Error loading image');
-                loadingOverlay.style.display = 'none';
-            };
-        }
-
-        $(document).ready(function () {
-            loadImage();
-            $("#pitcherSelect").change(function () {
-                loadImage();
-            });
-        });
-    </script>
 
 </main>
 
