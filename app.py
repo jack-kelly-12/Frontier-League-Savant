@@ -44,10 +44,10 @@ def umpire_report_image(umpire, filename):
     return send_from_directory(os.path.join(app.static_folder, 'UmpireReports', umpire), filename)
 
 
-@app.route('/stuff')
-def stuff():
+@app.route('/pitcher')
+def pitcher():
     pd.options.display.float_format = '{:,.0f}'.format
-    return render_template('stuff.html', stuff_data=stuff_df.to_dict('records'),
+    return render_template('pitcher.html', stuff_data=stuff_df.to_dict('records'),
                            location_data=location_df.to_dict('records'), pitching_data=pitching_df.to_dict('records'),
                            opp_data=opp_df.to_dict('records'), usage_data=usage_df.to_dict('records'),
                            profile_data=prof_df.to_dict('records'), pitchers=pitchers)

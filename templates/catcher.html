@@ -18,7 +18,7 @@
     <hr>
     <nav>
         <ul>
-            <li><a href="stuff">Pitchers</a></li>
+            <li><a href="pitcher">Pitchers</a></li>
             <li><a href="hitter">Hitters</a></li>
             <li><a href="umpire">Umpires</a></li>
             <li><a class="active" href="catcher">Catchers</a></li>
@@ -37,6 +37,9 @@
     </div>
     <div class="row justify-content-center">
         <div id="catcherPlotContainer" class="col-12 text-center">
+            <div id="loadingOverlay">
+            <div class="spinner"></div>
+        </div>
             <img id="catcherImage" src="" class="img-fluid">
         </div>
     </div>
@@ -101,6 +104,50 @@
 
             $("#catcherSelect").change(function () {
                 updateImageCatcher();
+            });
+        });
+    </script>
+<script>
+        $(document).ready(function () {
+            function updateImage() {
+                var selectedCatcher = $("#catcherSelect").val();
+                var imagePath = "/static/CatcherReports/" + selectedCatcher + ".png";
+                $("#catcherImage").attr("src", imagePath);
+            }
+
+            updateImage();
+
+            $("#catcherSelect").change(function () {
+                updateImage();
+            });
+        });
+    </script>
+    <script>
+        function loadImage() {
+            var loadingOverlay = document.getElementById('loadingOverlay');
+            loadingOverlay.style.display = 'block';
+
+            var imgSrc = '../static/images/Spinner-1s-200px.gif';
+            var catcherImage = document.getElementById('catcherImage');
+            var newImage = new Image();
+
+            newImage.src = imgSrc;
+
+            newImage.onload = function () {
+                catcherImage.src = imgSrc;
+                loadingOverlay.style.display = 'none';
+            };
+
+            newImage.onerror = function () {
+                console.error('Error loading image');
+                loadingOverlay.style.display = 'none';
+            };
+        }
+
+        $(document).ready(function () {
+            loadImage();
+            $("#catcherSelect").change(function () {
+                loadImage();
             });
         });
     </script>
