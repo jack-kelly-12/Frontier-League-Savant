@@ -30,9 +30,9 @@
 
 <hr>
 <main>
-    <p style="text-align: center;">Select a pitcher to view their plot:</p>
+    <p style="text-align: center;">Select a pitcher:</p>
     <div id="selectContainer">
-        <select id="pitcherSelect" class="col-6">
+        <select id="pitcherSelect" class="col-6" onchange="updateDisplayedImages(this.value)">
             {% for pitcher in pitchers %}
                 <option value="{{ pitcher }}">{{ pitcher }}</option>
             {% endfor %}
@@ -42,8 +42,8 @@
         <div id="loadingOverlay">
             <div class="spinner"></div>
         </div>
-        <img id="pitcherImage">
     </div>
+
 
     <div id="plusWrapper">
         <h2 class="titles">Stuff+</h2>
@@ -370,18 +370,34 @@
     </script>
     <script>
         $(document).ready(function () {
-            function updateImage() {
-                var selectedPitcher = $("#pitcherSelect").val();
-                var imagePath = "/static/Usages/" + selectedPitcher + ".png";
-                $("#pitcherImage").attr("src", imagePath);
-            }
+            $.get('/pitchers', function (data) {
+                const pitchers = data.pitchers;
+                const pitcherSelect = $('#pitcherSelect');
 
-            updateImage();
+                pitchers.forEach((pitcher) => {
+                    const option = $('<option>').val(pitcher).text(pitcher);
+                    pitcherSelect.append(option);
+                });
 
-            $("#pitcherSelect").change(function () {
-                updateImage();
+                pitcherSelect.change(function () {
+                    const selectedPitcher = $(this).val();
+                    updateDisplayedImages(selectedPitcher);
+                });
+
+                updateDisplayedImages(pitcherSelect.val());
             });
         });
+    </script>
+    <script>
+        function updateDisplayedImages(selectedPitcher) {
+            $('#plotContainerPitcher').empty();
+            const imageNames = ['usage.png', 'mvmt.png']; // Image filenames
+            for (const imageName of imageNames) {
+                const imagePath = `PitcherReports/${selectedPitcher}/${imageName}`;
+                const imgElement = $('<img>').attr('src', imagePath);
+                $('#plotContainerPitcher').append(imgElement);
+            }
+        }
     </script>
 
 

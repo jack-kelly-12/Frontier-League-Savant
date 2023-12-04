@@ -53,6 +53,18 @@ def pitcher():
                            profile_data=prof_df.to_dict('records'), pitchers=pitchers)
 
 
+@app.route('/pitchers')
+def ps():
+    pitcher_report_dir = os.path.join(app.static_folder, 'PitcherReports')
+    pitchers = os.listdir(pitcher_report_dir)
+    return jsonify({'pitchers': pitchers})
+
+
+@app.route('/PitcherReports/<pitcher>/<filename>')
+def pitcher_report_image(pitcher, filename):
+    return send_from_directory(os.path.join(app.static_folder, 'PitcherReports', pitcher), filename)
+
+
 @app.route('/hitter')
 def xstats():
     return render_template('hitters.html', disc_df=disc_df.to_dict('records'), spray_df=spray_df.to_dict('records'),

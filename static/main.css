@@ -83,7 +83,7 @@ img {
 
 }
 
-#plotContainer {
+#plotContainer, #plotContainerPitcher {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,6 +91,11 @@ img {
 
 #plotContainer img {
     max-width: 400px;
+    margin: 10px;
+}
+
+#plotContainerPitcher img {
+    max-width: 600px;
     margin: 10px;
 }
 
@@ -193,7 +198,7 @@ header li {
     text-align: center;
 }
 
-#pitchingWrapper, #xstatsWrapper, #plotContainer {
+#pitchingWrapper, #xstatsWrapper, #plotContainer, #plotContainerPitcher {
     margin-bottom: 30px;
 }
 
@@ -231,6 +236,7 @@ header li {
     }
 
     #plotContainer,
+    #plotContainerPitcher,
     #xstatsWrapper,
     #stuffWrapper,
     #locationWrapper,
