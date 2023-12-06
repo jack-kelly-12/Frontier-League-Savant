@@ -16,7 +16,7 @@ opp_df = pd.read_csv('csvs/opponent.csv')
 usage_df = pd.read_csv('csvs/usages.csv')
 prof_df = pd.read_csv('csvs/profile.csv')
 
-pitcher_folder = os.path.join(app.static_folder, 'Usages')
+pitcher_folder = os.path.join(app.static_folder, 'PitcherReports')
 catcher_folder = os.path.join(app.static_folder, 'CatcherReports')
 pitchers = [f[:-4] for f in os.listdir(pitcher_folder) if f.endswith('.png')]
 catchers = [f[:-4] for f in os.listdir(catcher_folder) if f.endswith('.png')]
