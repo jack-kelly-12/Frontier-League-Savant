@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 </head>
 
 <body>
@@ -398,6 +399,13 @@
                 $('#plotContainerPitcher').append(imgElement);
             }
         }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#pitcherSelect').select2({
+                
+            });
+        });
     </script>
 
 

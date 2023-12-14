@@ -10,6 +10,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     <script src="../static/main.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 </head>
 
 <body>
@@ -115,6 +117,13 @@
                 });
 
                 updateDisplayedImages(umpireSelect.val());
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#umpireSelect').select2({
+
             });
         });
     </script>
