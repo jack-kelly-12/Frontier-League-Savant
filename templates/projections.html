@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FL Savant</title>
+    <link rel="stylesheet" href="../static/main.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="../static/main.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+</head>
+
+<body>
+<header>
+    <h1><a href="/">Frontier League Savant</a></h1>
+    <hr>
+    <nav>
+        <ul>
+            <li><a href="pitcher">Pitchers</a></li>
+            <li><a href="hitter">Hitters</a></li>
+            <li><a href="umpire">Umpires</a></li>
+            <li><a href="catcher">Catchers</a></li>
+            <li><a class="active" href="projections">2024 Projections</a></li>
+        </ul>
+    </nav>
+</header>
+<hr>
+<main>
+    <h2 class="titles">Hitter Projections</h2>
+    <div id="projWrapper">
+        <table id="hitterProjectionsTable" class="display">
+            <thead>
+            <tr>
+                <th>Hitter</th>
+                <th>Age</th>
+                <th>Team</th>
+                <th class="show-mobile">1B</th>
+                <th class="show-mobile">2B</th>
+                <th class="show-mobile">3B</th>
+                <th class="show-mobile">HR</th>
+                <th class="show-mobile">SO</th>
+                <th class="show-mobile">SB</th>
+                <th class="show-mobile">BB</th>
+                <th>wOBA</th>
+                <th>BA</th>
+                <th>SLG</th>
+                <th>OBP</th>
+                <th>BAbip</th>
+                <th>bat-WAR</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in hitter_projections_df %}
+                <tr>
+                    <td>{{ row['Name'] }}</td>
+                    <td>{{ row['Age'] }}</td>
+                    <td>{{ row['Tm'] }}</td>
+                    <td class="show-mobile">{{ row['1B'] }}</td>
+                    <td class="show-mobile">{{ row['2B'] }}</td>
+                    <td class="show-mobile">{{ row['3B'] }}</td>
+                    <td class="show-mobile"> {{ row['HR'] }}</td>
+                    <td class="show-mobile">{{ row['SO'] }}</td>
+                    <td class="show-mobile">{{ row['SB'] }}</td>
+                    <td class="show-mobile">{{ row['BB'] }}</td>
+                    <td>{{ row['wOBA'] }}</td>
+                    <td>{{ row['BA'] }}</td>
+                    <td>{{ row['SLG'] }}</td>
+                    <td>{{ row['OBP'] }}</td>
+                    <td>{{ row['BAbip'] }}</td>
+                    <td>{{ row['bat-WAR'] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <h2 class="titles">Pitcher Projections</h2>
+    <div id="projWrapper">
+        <table id="pitcherProjectionsTable" class="display">
+            <thead>
+            <tr>
+                <th>Pitcher</th>
+                <th>Age</th>
+                <th>Team</th>
+                <th class="show-mobile">K</th>
+                <th class="show-mobile">BB</th>
+                <th class="show-mobile">HR</th>
+                <th>ERA</th>
+                <th>FIP</th>
+                <th>K/9</th>
+                <th>BB/9</th>
+                <th>K/BB</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in pitcher_projections_df %}
+                <tr>
+                    <td>{{ row['Name'] }}</td>
+                    <td>{{ row['Age'] }}</td>
+                    <td>{{ row['Tm'] }}</td>
+                    <td class="show-mobile">{{ row['K'] }}</td>
+                    <td class="show-mobile">{{ row['BB'] }}</td>
+                    <td class="show-mobile">{{ row['HR'] }}</td>
+                    <td>{{ row['ERA'] }}</td>
+                    <td>{{ row['FIP'] }}</td>
+                    <td>{{ row['K/9'] }}</td>
+                    <td>{{ row['BB/9'] }}</td>
+                    <td>{{ row['K/BB'] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function () {
+            function applyCustomRenderingCallback() {
+                $('#hitterProjectionsTable').DataTable({
+                    columnDefs: [{
+                        targets: "_all",
+                        render: function (data, type, row, meta) {
+                            if ($.isNumeric(data)) {
+                                if (meta.col >= 10 && meta.col < 15) {
+                                    return Number(data).toFixed(3);
+                                }
+                                if (meta.col === 15) {
+                                    return Number(data).toFixed(2);
+                                } else {
+                                    return Number(data).toFixed(0);
+                                }
+                            }
+                            return data;
+                        }
+                    }],
+                });
+            }
+
+            applyCustomRenderingCallback();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            function applyCustomRenderingCallback() {
+                $('#pitcherProjectionsTable').DataTable({
+                    columnDefs: [{
+                        targets: "_all",
+                        render: function (data, type, row, meta) {
+                            if ($.isNumeric(data)) {
+                                if ((meta.col > 5) & (meta.col <= 7)) {
+                                    return Number(data).toFixed(2);
+                                } else if (meta.col > 7) {
+                                    return Number(data).toFixed(1);
+                                } else {
+                                    return Number(data).toFixed(0);
+                                }
+                            }
+                            return data;
+                        }
+                    }],
+                });
+            }
+
+            applyCustomRenderingCallback();
+        });
+    </script>
+
+</main>
+
+</body>
+
+</html>

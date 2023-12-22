@@ -114,7 +114,7 @@ hr {
 
 
 #stuffWrapper, #locationWrapper, #pitchingWrapper, #xstatsWrapper, #umpWrapper, #catcherWrapper, #discWrapper,
-#sprayWrapper, #profileWrapper, #usageWrapper, #oppWrapper {
+#sprayWrapper, #profileWrapper, #usageWrapper, #oppWrapper, #projWrapper {
     max-width: 80%;
     align-items: center;
     margin: 0 auto 20px;
@@ -198,7 +198,7 @@ header li {
     text-align: center;
 }
 
-#pitchingWrapper, #xstatsWrapper, #plotContainer, #plotContainerPitcher {
+#pitchingWrapper, #xstatsWrapper, #plotContainer, #plotContainerPitcher, #projWrapper {
     margin-bottom: 30px;
 }
 
@@ -240,11 +240,11 @@ header li {
     #xstatsWrapper,
     #stuffWrapper,
     #locationWrapper,
-    #pitchingWrapper, #umpLeaderboardTable {
+    #pitchingWrapper, #umpLeaderboardTable, #projWrapper {
         flex-direction: column;
     }
 
-    #plusWrapper {
+    #plusWrapper  {
         flex-direction: column;
     }
 
@@ -281,17 +281,19 @@ header li {
         margin: 0;
     }
 
-    #plusWrapper {
+    #plusWrapper, #projWrapper  {
         overflow-x: auto;
     }
 
-    #stuffWrapper, #locationWrapper, #pitchingWrapper, #umpWrapper {
+    #stuffWrapper, #locationWrapper, #pitchingWrapper, #umpWrapper, #projWrapper  {
         width: auto;
     }
 
     .show-mobile {
         display: none;
     }
+
+
 }
 
 

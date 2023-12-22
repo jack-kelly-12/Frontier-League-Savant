@@ -15,6 +15,8 @@ spray_df = pd.read_csv('csvs/spray_data.csv')
 opp_df = pd.read_csv('csvs/opponent.csv')
 usage_df = pd.read_csv('csvs/usages.csv')
 prof_df = pd.read_csv('csvs/profile.csv')
+hitter_projections_df = pd.read_csv('csvs/2024 Hitter Projections.csv')
+pitcher_projections_df = pd.read_csv('csvs/2024 Pitcher Projections.csv')
 
 pitcher_folder = os.path.join(app.static_folder, 'PitcherReports')
 catcher_folder = os.path.join(app.static_folder, 'CatcherReports')
@@ -75,6 +77,13 @@ def xstats():
 def catcher():
     return render_template('catcher.html', catchers=catchers,
                            catcher_leaderboard_df=catcher_leaderboard_df.to_dict('records'))
+
+
+@app.route('/projections')
+def projection():
+    return render_template('projections.html',
+                           hitter_projections_df=hitter_projections_df.to_dict('records'),
+                           pitcher_projections_df=pitcher_projections_df.to_dict('records'))
 
 
 if __name__ == '__main__':

@@ -22,6 +22,7 @@
             <li><a class="active" href="hitter">Hitters</a></li>
             <li><a href="umpire">Umpires</a></li>
             <li><a href="catcher">Catchers</a></li>
+            <li><a href="projections">2024 Projections</a></li>
         </ul>
     </nav>
 </header>
@@ -34,7 +35,8 @@
             <tr>
                 <th>Batter</th>
                 <th>xBA</th>
-                <th>xwOBA</th>
+                <th>xwOBAcon</th>
+                <th>xSLG</th>
             </tr>
             </thead>
             <tbody>
@@ -43,6 +45,7 @@
                     <td>{{ row['Batter'] }}</td>
                     <td>{{ row['xBA'] }}</td>
                     <td>{{ row['xwOBA'] }}</td>
+                    <td>{{ row['xSLG'] }}</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -86,9 +89,11 @@
             <tr>
                 <th>Batter</th>
                 <th>Avg. EV</th>
-                <th>Avg. LA%</th>
-                <th>Avg. Direction</th>
-                <th>Approach Type</th>
+                <th>Max EV</th>
+                <th>90th Percentile EV</th>
+                <th>Avg. LA</th>
+                <th class="show-mobile">Avg. Direction</th>
+                <th class="show-mobile">Approach Type</th>
             </tr>
             </thead>
             <tbody>
@@ -96,9 +101,11 @@
                 <tr>
                     <td>{{ row['Batter'] }}</td>
                     <td>{{ row['Avg. EV'] }}</td>
+                    <td>{{ row['Max EV'] }}</td>
+                    <td>{{ row['90th Percentile EV'] }}</td>
                     <td>{{ row['Avg. LA'] }}</td>
-                    <td>{{ row['Avg. Direction'] }}</td>
-                    <td>{{ row['Approach Type'] }}</td>
+                    <td class="show-mobile">{{ row['Avg. Direction'] }}</td>
+                    <td class="show-mobile">{{ row['Approach Type'] }}</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -162,9 +169,6 @@
 
         applyCustomRenderingCallback();
     </script>
-
-
 </main>
 </body>
-
 </html>
