@@ -87,6 +87,10 @@
                 <th>Pitcher</th>
                 <th>Age</th>
                 <th>Team</th>
+                <th>IP</th>
+                <th class="show-mobile">W</th>
+                <th class="show-mobile">L</th>
+                <th class="show-mobile">S</th>
                 <th class="show-mobile">K</th>
                 <th class="show-mobile">BB</th>
                 <th class="show-mobile">HR</th>
@@ -103,6 +107,10 @@
                     <td>{{ row['Name'] }}</td>
                     <td>{{ row['Age'] }}</td>
                     <td>{{ row['Tm'] }}</td>
+                    <td>{{ row['IP'] }}</td>
+                    <td class="show-mobile">{{ row['W'] }}</td>
+                    <td class="show-mobile">{{ row['L'] }}</td>
+                    <td class="show-mobile">{{ row['S'] }}</td>
                     <td class="show-mobile">{{ row['K'] }}</td>
                     <td class="show-mobile">{{ row['BB'] }}</td>
                     <td class="show-mobile">{{ row['HR'] }}</td>
@@ -150,9 +158,9 @@
                         targets: "_all",
                         render: function (data, type, row, meta) {
                             if ($.isNumeric(data)) {
-                                if ((meta.col > 5) & (meta.col <= 7)) {
+                                if ((meta.col === 10) || (meta.col === 11)) {
                                     return Number(data).toFixed(2);
-                                } else if (meta.col > 7) {
+                                } else if ((meta.col === 3) || (meta.col >= 12)) {
                                     return Number(data).toFixed(1);
                                 } else {
                                     return Number(data).toFixed(0);
