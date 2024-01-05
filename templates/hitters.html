@@ -64,6 +64,7 @@
                 <th class="show-mobile">Z-Contact%</th>
                 <th>Contact%</th>
                 <th>SwStr%</th>
+                <th>SD+</th>
             </tr>
             </thead>
             <tbody>
@@ -77,6 +78,7 @@
                     <td class="show-mobile">{{ row['Z-Contact%'] }}</td>
                     <td>{{ row['Contact%'] }}</td>
                     <td>{{ row['SwStr%'] }}</td>
+                    <td>{{ row['SD+'] }}</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -157,15 +159,20 @@
             $('#discLeaderboard').DataTable({
                 columnDefs: [{
                     targets: "_all",
-                    render: function (data) {
-                        if ($.isNumeric(data)) {
-                            return Number(data).toFixed(3);
+                    render: function (data, type, row, meta) {
+                        if (type === 'display' && $.isNumeric(data)) {
+                            if (meta.col === 8) {
+                                return parseInt(data, 10);
+                            } else {
+                                return Number(data).toFixed(3);
+                            }
                         }
                         return data;
                     }
                 }],
             });
         }
+
 
         applyCustomRenderingCallback();
     </script>
