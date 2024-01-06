@@ -40,6 +40,7 @@
                 <th>Hitter</th>
                 <th>Age</th>
                 <th>Team</th>
+                <th>PA</th>
                 <th class="show-mobile">1B</th>
                 <th class="show-mobile">2B</th>
                 <th class="show-mobile">3B</th>
@@ -52,6 +53,7 @@
                 <th>SLG</th>
                 <th>OBP</th>
                 <th>BAbip</th>
+                <th>wRC+</th>
                 <th>bat-WAR</th>
             </tr>
             </thead>
@@ -61,6 +63,7 @@
                     <td>{{ row['Name'] }}</td>
                     <td>{{ row['Age'] }}</td>
                     <td>{{ row['Tm'] }}</td>
+                    <td>{{ row['PA'] }} </td>
                     <td class="show-mobile">{{ row['1B'] }}</td>
                     <td class="show-mobile">{{ row['2B'] }}</td>
                     <td class="show-mobile">{{ row['3B'] }}</td>
@@ -73,6 +76,7 @@
                     <td>{{ row['SLG'] }}</td>
                     <td>{{ row['OBP'] }}</td>
                     <td>{{ row['BAbip'] }}</td>
+                    <td>{{ row['wRC+'] }}</td>
                     <td>{{ row['bat-WAR'] }}</td>
                 </tr>
             {% endfor %}
@@ -134,10 +138,10 @@
                         targets: "_all",
                         render: function (data, type, row, meta) {
                             if ($.isNumeric(data)) {
-                                if (meta.col >= 10 && meta.col < 15) {
+                                if (meta.col >= 11 && meta.col <= 15) {
                                     return Number(data).toFixed(3);
                                 }
-                                if (meta.col === 15) {
+                                if (meta.col === 17) {
                                     return Number(data).toFixed(1);
                                 } else {
                                     return Number(data).toFixed(0);
