@@ -99,6 +99,7 @@
                 <th>K/9</th>
                 <th>BB/9</th>
                 <th>K/BB</th>
+                <th>pit-WAR</th>
             </tr>
             </thead>
             <tbody>
@@ -119,6 +120,7 @@
                     <td>{{ row['K/9'] }}</td>
                     <td>{{ row['BB/9'] }}</td>
                     <td>{{ row['K/BB'] }}</td>
+                    <td>{{ row['pit-WAR'] }}</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -136,7 +138,7 @@
                                     return Number(data).toFixed(3);
                                 }
                                 if (meta.col === 15) {
-                                    return Number(data).toFixed(2);
+                                    return Number(data).toFixed(1);
                                 } else {
                                     return Number(data).toFixed(0);
                                 }
