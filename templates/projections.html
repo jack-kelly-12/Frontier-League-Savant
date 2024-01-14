@@ -160,7 +160,7 @@
                         targets: "_all",
                         render: function (data, type, row, meta) {
                             if ($.isNumeric(data)) {
-                                if ((meta.col === 10) || (meta.col === 11)) {
+                                if ((meta.col === 9) || (meta.col === 10)) {
                                     return Number(data).toFixed(2);
                                 } else if ((meta.col === 2) || (meta.col >= 11))  {
                                     return Number(data).toFixed(1);
