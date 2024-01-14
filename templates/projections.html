@@ -134,10 +134,10 @@
                         targets: "_all",
                         render: function (data, type, row, meta) {
                             if ($.isNumeric(data)) {
-                                if (meta.col >= 11 && meta.col <= 15) {
+                                if (meta.col >= 10 && meta.col <= 14) {
                                     return Number(data).toFixed(3);
                                 }
-                                if (meta.col === 17) {
+                                if (meta.col === 16) {
                                     return Number(data).toFixed(1);
                                 } else {
                                     return Number(data).toFixed(0);
